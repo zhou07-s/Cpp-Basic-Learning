@@ -4,6 +4,14 @@
 #define MAX_DISTENCE 1000
 using namespace std;
 /*
+	Debug record:Fixed critical stack overflow error  (0xc00000fd)
+1. Root cause:Declared 1000×1000 large array as local variable inside mian(),which exceeds the default 1MB stack limit and triggers memory overflow.
+2. Solution: Declare large arrays as global variables or use vector for dynamic memory allocation.
+	调试记录：修复严重栈溢出错误（0xc00000fd）
+根本原因：在 main() 函数内声明了 1000×1000 的大型数组作为局部变量，超出了系统默认的 1MB 栈空间限制，从而触发内存溢出。
+解决方案：将大型数组声明为全局变量，或使用 vector 进行动态内存分配。
+*/
+/*
 1.初始化数组dist、path和s；
 2.while (s中的元素个数<n)
 	2.1 在dist[n]中求最小值，其下标为k；
